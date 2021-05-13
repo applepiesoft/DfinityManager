@@ -6,7 +6,7 @@ Download the script in the folder where you have the `nns-ifaces-0.8.0` folder.
 
 or if you don't have wget
 
-`https://raw.githubusercontent.com/applepiesoft/DfinityManager/main/dman.rb`
+`curl https://raw.githubusercontent.com/applepiesoft/DfinityManager/main/dman.rb`
 
 Usage:
 
