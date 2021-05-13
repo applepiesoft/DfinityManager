@@ -74,9 +74,9 @@ end
 
 def get_neuron_ids(legacy_address)
   result = %x{dfx canister --network=https://ic0.app --no-wallet call #{GENESIS_TOKEN_CANISTER} get_account '("#{legacy_address}")' --output=raw}.strip
-  # quick and dirty parsing into JSON format
   parsed_result = %x{didc decode -t "(Result_2)" -d #{NNS_IFACES_DIR}/genesis_token.did "#{result}"}
 
+  # quick and dirty parsing into JSON format
   ids = JSON.parse(parsed_result.gsub(/record\s*\{\s*([^\s=]+)\s*=\s*(.+?)\s*:\snat64;\};/, '{ "\1": "\2" },').gsub(/\A.*neuron_ids\s*=\s*vec\s*\{/m, '[').gsub(/\},\};\n.+\z/m, '}]'))
   ids.map do |r|
     r['id'].strip
